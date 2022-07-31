@@ -88,52 +88,60 @@ app.post("/update-fooditems", async (req, res) => {
 });
 
 app.post("/update-category", async (req, res) => {
-  console.log(req.body);
-  let categoryObj = await Categories.findOne({ sort: { created_at: -1 } });
-  categoryObj = categoryObj["mainCategory"];
-  let obj = categoryObj.filter((c) => c._id == req.body._id);
-  for (var key in req.body) {
-    if (req.body[key] == "" || req.body[key] == "0") {
-      req.body[key] = obj[0][key];
-    }
-  }
-
-  Categories.updateOne(
-    { "mainCategory._id": req.body._id },
-    {
-      $set: {
-        "mainCategory.$.name": req.body.name,
-        "mainCategory.$.price": req.body.price,
-        "mainCategory.$.foodType": req.body.foodType,
-      },
-    },
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(result);
+  try {
+    console.log(req.body);
+    let categoryObj = await Categories.findOne({ sort: { created_at: -1 } });
+    categoryObj = categoryObj["mainCategory"];
+    let obj = categoryObj.filter((c) => c._id == req.body._id);
+    for (var key in req.body) {
+      if (req.body[key] == "" || req.body[key] == "0") {
+        req.body[key] = obj[0][key];
       }
     }
-  );
 
-  res.redirect("/edit");
+    Categories.updateOne(
+      { "mainCategory._id": req.body._id },
+      {
+        $set: {
+          "mainCategory.$.name": req.body.name,
+          "mainCategory.$.price": req.body.price,
+          "mainCategory.$.foodType": req.body.foodType,
+        },
+      },
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(result);
+        }
+      }
+    );
+
+    res.redirect("/edit");
+  } catch (err) {
+    res.send(err.message);
+  }
 });
 app.get("/download-main", async (req, res) => {
-  (async () => {
-    const browser = await puppeteer.launch({
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
-    const page = await browser.newPage();
-    await page.goto("https://punjabibite.herokuapp.com/");
+  try {
+    (async () => {
+      const browser = await puppeteer.launch({
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      });
+      const page = await browser.newPage();
+      await page.goto("https://punjabibite.herokuapp.com/");
 
-    page.setViewport({ width: 1536, height: 721 });
-    // page.setViewport({ width: 1836, height: 1221 });
+      page.setViewport({ width: 1536, height: 721 });
+      // page.setViewport({ width: 1836, height: 1221 });
 
-    await page.screenshot({ path: "Menu.png" });
-    res.download(path.join(__dirname, "Menu.png"));
+      await page.screenshot({ path: "Menu.png" });
+      res.download(path.join(__dirname, "Menu.png"));
 
-    await browser.close();
-  })();
+      await browser.close();
+    })();
+  } catch (error) {
+    res.send(error.message);
+  }
 });
 
 app.get("/download-sub", async (req, res) => {

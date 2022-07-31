@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sub menu</title>
+    <link rel="stylesheet" href="css/type1_sub.css" />
+  </head>
+  <body>
+    <div class="title">
+      <h1><%= heading %></h1>
+    </div>
+    <section>
+      <div>
+        <ul>
+          <% for(i in subMenuItems){ %>
+          <li>
+            <span class="label"><%= subMenuItems[i] %></span>
+            <span class="price"
+              ><% item=itemObj.filter(x=>x.name.replace(/\s+/g, "")
+              ==subMenuItems[i].replace(/\s+/g, "") ) %><%= item[0].price %>
+            </span>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main menu</title>
+    <link rel="stylesheet" href="/css/type1.css" />
+  </head>
+  <body>
+    <div class="title">
+      <h1><%= timing %></h1>
+    </div>
+
+    <section>
+      <% for( cat in foodObject) {%>
+
+      <div         <% if(cat.includes("Non Veg")) {%> 
+       class="nonveg"
+        <% } %> 
+        >
+
+        <%price =categoryObj.filter( (obj) => cat.replace(/\s+/g, "") ===
+        obj.name.replace(/\s+/g, "") )[0].price%> <% if(price != null) {%>
+        <h4><%= price %>/-</h4>
+        <% } %>
+          
+        <h1><%= cat %></h1>
+        <ul>
+          <% for( items in foodObject[cat]) {%>
+            <% if(!Array.isArray(foodObject[cat])) {%> 
+              <li><%=  foodObject[cat]%> </li>
+              <%break } %> 
+              <% if(foodObject[cat][items].includes("etc")){ %>
+                <% console.log(foodObject[cat][items]) %> 
+                <li class="smaller"><%= foodObject[cat][items] %></li>
+                <%continue } %>  
+          <li><%= foodObject[cat][items] %></li>
+          <% } %>
+        </ul>
+      </div>
+      <% } %>
+    </section>
+
+    <img src="/images/burger.png" alt="" class="burger" />
+    <img src="/images/noodles.png" alt="" class="noodles" />
+    <img src="/images/mocktail.png" alt="" class="mocktail" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/menu.js"></script>
+  </body>
+</html>

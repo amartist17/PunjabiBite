@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breakfast</title>
+    <link rel="stylesheet" href="/css/lunch.css" />
+  </head>
+  <body>
+    <section class="page" style="background-image: url(/images/LunchBg.png)">
+      <div class="data">
+        <% keys.map((key,index)=>{ %>
+        <ul>
+          <li class="heading">
+            <%= key %> <span>@<%= prices[index] %> </span>
+          </li>
+          <% values[index].map(item=>{ %>
+          <li><%= item %></li>
+          <% }) %>
+          <!-- <li>Lorem, ipsum.</li>
+          <li>Lorem, ipsum.</li>
+          <li>Lorem, ipsum.</li> -->
+        </ul>
+
+        <% }) %>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+}
+
+.page {
+  height: 100vh;
+  width: 70vw;
+  /* background-image: url("./Breakfastmenu.png"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+h1 {
+  position: absolute;
+  font-family: "Quicksand", sans-serif;
+  color: #ef6c00;
+  font-weight: 700;
+  font-size: 52px;
+  top: 30%;
+  right: 50%;
+  transform: translateX(50%);
+}
+.data {
+  /* /* padding: 20% 15%; */
+  /* background-color: red; */
+  height: 50%;
+  width: 80%;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+
+  padding: 2% 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+ul {
+  list-style-type: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+li {
+  font-size: 48px;
+  font-weight: 700;
+  font-family: "Quicksand", sans-serif;
+  color: #ef6c00;
+  white-space: nowrap;
+}

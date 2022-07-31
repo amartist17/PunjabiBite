@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Graduate&family=Josefin+Sans:wght@100;200;300;400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+background-color: white;
+
+}
+body {
+    background-color: #20181D;
+    overflow: hidden;
+    height: 760px;
+    width: 30%;
+}
+
+.title{
+    padding: 24px;
+    text-align: center;
+    h1{
+        font-size: 30px;
+        font-family: 'Graduate', cursive;
+        font-weight: 500;
+        background-color: #E66407;
+        color: white;
+        display: inline-block;
+        padding: 12px 26px;
+        border-radius: 50px;
+    }
+}
+
+section{
+    div{
+        width: 80%;
+        background-color: #eeede8e9;
+        border-radius: 12px;
+        border: 8px solid #E66407;
+        padding: 16px;
+        margin: 0 auto;
+        ul{
+            list-style: none;
+            font-family: 'Josefin Sans', sans-serif;
+            li{
+                margin: 10px 0;
+                display: flex;
+                justify-content:space-between;
+                font-size: 26px;
+                    font-weight: 600;
+                position: relative;
+                span.label{
+                    
+                    text-transform: capitalize;
+                }
+               span.price{
+                //    position: absolute;
+                   margin-left: 42px;
+                   margin-top:4px;
+                //    right: 0;
+                   text-transform: capitalize;
+
+               }
+            }
+        }
+    }
+}

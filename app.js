@@ -120,7 +120,9 @@ app.post("/update-category", async (req, res) => {
 });
 app.get("/download-main", async (req, res) => {
   (async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
     await page.goto("http://127.0.0.1:3000/");
 
@@ -136,7 +138,9 @@ app.get("/download-main", async (req, res) => {
 
 app.get("/download-sub", async (req, res) => {
   (async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
     await page.goto("http://127.0.0.1:3000/subMenu");
 

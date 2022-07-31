@@ -54,7 +54,9 @@ router.post("/createMenu", async (req, res) => {
 
 router.get("/download", async (req, res) => {
   (async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
     await page.goto("http://127.0.0.1:3000/lunch");
 

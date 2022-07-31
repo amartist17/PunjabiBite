@@ -126,7 +126,9 @@ app.get("/download-main", async (req, res) => {
   try {
     (async () => {
       const browser = await puppeteer.launch({
-        args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        headless: true,
+        args: ["--no-sandbox", "--disable-setuid-sandbox", "--use-gl=egl"],
+        ignoreDefaultArgs: ["--disable-extensions"],
       });
       const page = await browser.newPage();
       await page.goto("https://punjabibite.herokuapp.com/");

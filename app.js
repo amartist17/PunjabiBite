@@ -124,7 +124,7 @@ app.get("/download-main", async (req, res) => {
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
-    await page.goto("http://127.0.0.1:3000/");
+    await page.goto("https://punjabibite.herokuapp.com/");
 
     page.setViewport({ width: 1536, height: 721 });
     // page.setViewport({ width: 1836, height: 1221 });
@@ -142,7 +142,7 @@ app.get("/download-sub", async (req, res) => {
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
-    await page.goto("http://127.0.0.1:3000/subMenu");
+    await page.goto("https://punjabibite.herokuapp.com/subMenu");
 
     page.setViewport({ width: 1536, height: 721 });
     // page.setViewport({ width: 1836, height: 1221 });

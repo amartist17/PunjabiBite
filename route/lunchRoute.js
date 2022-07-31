@@ -58,7 +58,7 @@ router.get("/download", async (req, res) => {
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
-    await page.goto("http://127.0.0.1:3000/lunch");
+    await page.goto("https://punjabibite.herokuapp.com/lunch");
 
     page.setViewport({ width: 1920, height: 1080 });
 
